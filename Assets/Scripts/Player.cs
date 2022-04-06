@@ -15,15 +15,15 @@ public class Player : MonoBehaviour
         remainingTimeForMove = timeStepForMove;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        switch (collision.gameObject.tag)
+        switch (collider.tag)
         {
             case "Coin":
-                print("Add coin");
+                Destroy(collider.gameObject);
                 break;
             case "Poison":
-                print("Restart level");
+                Destroy(collider.gameObject);
                 break;
         }
     }
