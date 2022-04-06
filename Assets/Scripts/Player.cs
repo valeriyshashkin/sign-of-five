@@ -8,11 +8,17 @@ public class Player : MonoBehaviour
     SpriteRenderer sprite;
     public float timeStepForMove = 0.5f;
     float remainingTimeForMove;
+    public GameObject gameOverText;
+    bool isGameOver = true;
+    List<Renderer> hiddenGameObjects = new List<Renderer>();
+    Renderer thisRenderer;
 
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         remainingTimeForMove = timeStepForMove;
+        thisRenderer = GetComponent<Renderer>();
+        thisRenderer.enabled = false;
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -20,16 +26,41 @@ public class Player : MonoBehaviour
         switch (collider.tag)
         {
             case "Coin":
-                Destroy(collider.gameObject);
+                var coinRenderer = collider.gameObject.GetComponent<Renderer>();
+                hiddenGameObjects.Add(coinRenderer);
+                coinRenderer.enabled = false;
                 break;
             case "Poison":
-                Destroy(collider.gameObject);
+                var poisonRenderer = collider.gameObject.GetComponent<Renderer>();
+                hiddenGameObjects.Add(poisonRenderer);
+                poisonRenderer.enabled = false;
+                break;
+            case "Wall":
+                thisRenderer.enabled = false;
+                gameOverText.SetActive(true);
+                isGameOver = true;
                 break;
         }
     }
 
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Return) && isGameOver)
+        {
+            isGameOver = false;
+            gameOverText.SetActive(false);
+            hiddenGameObjects.ForEach(i => i.enabled = true);
+            transform.position = new Vector3(-2.5f, 2.5f, 0f);
+            direction = Vector2.right;
+            thisRenderer.enabled = true;
+        }
+
+        if (isGameOver)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             direction = Vector2.up;

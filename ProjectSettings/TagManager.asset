@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Poison
   - Coin
+  - Wall
   layers:
   - Default
   - TransparentFX
