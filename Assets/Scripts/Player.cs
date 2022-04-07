@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI timeCount;
     public float timeToFinish;
     float remainingTimeToFinish;
+    Menu menuScript;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
         remainingTimeForMove = timeToMove;
         remainingTimeToFinish = timeToFinish;
         thisRenderer = GetComponent<Renderer>();
+        menuScript = menu.GetComponent<Menu>();
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -54,10 +56,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Return) && isGameOver)
+        if (menuScript.isReturnPressed && menuScript.GetSelectedItem() == "Continue")
         {
             isGameOver = false;
+            menuScript.isReturnPressed = false;
             menu.SetActive(false);
             hiddenGameObjects.ForEach(i => i.SetActive(true));
             transform.position = startPosition;
