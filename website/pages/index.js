@@ -4,10 +4,9 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Змейка</title>
-        <meta name="description" content="Змейка" />
+        <title>Спаси змейку - Скачать</title>
       </Head>
-      <h1>Змейка</h1>
+      <h1>Спаси змейку</h1>
       <div className="center">
         <a href="snake-installer.exe">Скачать</a>
       </div>
