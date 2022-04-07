@@ -1,23 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     Vector2 direction = Vector2.right;
     SpriteRenderer sprite;
-    public float timeStepForMove = 0.5f;
+    public float timeToMove;
     float remainingTimeForMove;
     public GameObject menu;
     bool isGameOver = true;
     List<GameObject> hiddenGameObjects = new List<GameObject>();
     Renderer thisRenderer;
     public Vector2 startPosition;
+    public TextMeshProUGUI coinCount;
+    public TextMeshProUGUI timeCount;
+    public float timeToFinish;
+    float remainingTimeToFinish;
 
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
-        remainingTimeForMove = timeStepForMove;
+        remainingTimeForMove = timeToMove;
+        remainingTimeToFinish = timeToFinish;
         thisRenderer = GetComponent<Renderer>();
     }
 
@@ -28,8 +34,13 @@ public class Player : MonoBehaviour
             case "Coin":
                 hiddenGameObjects.Add(collider.gameObject);
                 collider.gameObject.SetActive(false);
+                coinCount.text = (int.Parse(coinCount.text) + 1).ToString();
                 break;
             case "Poison":
+                hiddenGameObjects.Add(collider.gameObject);
+                collider.gameObject.SetActive(false);
+                break;
+            case "Health":
                 hiddenGameObjects.Add(collider.gameObject);
                 collider.gameObject.SetActive(false);
                 break;
@@ -52,12 +63,22 @@ public class Player : MonoBehaviour
             transform.position = startPosition;
             direction = Vector2.right;
             thisRenderer.enabled = true;
+            remainingTimeToFinish = timeToFinish;
         }
 
         if (isGameOver)
         {
             return;
         }
+
+        if (remainingTimeToFinish < 0)
+        {
+            isGameOver = true;
+            menu.SetActive(true);
+        }
+
+        remainingTimeToFinish -= Time.deltaTime;
+        timeCount.text = Mathf.Ceil(remainingTimeToFinish).ToString();
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -83,7 +104,7 @@ public class Player : MonoBehaviour
         else
         {
             transform.Translate(direction * sprite.bounds.size.x);
-            remainingTimeForMove = timeStepForMove;
+            remainingTimeForMove = timeToMove;
         }
     }
 }
