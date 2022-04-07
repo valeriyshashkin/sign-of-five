@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     public float timeToFinish;
     float remainingTimeToFinish;
     Menu menuScript;
+    List<GameObject> parts = new List<GameObject>();
+    public GameObject part;
 
     void Start()
     {
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour
         remainingTimeToFinish = timeToFinish;
         thisRenderer = GetComponent<Renderer>();
         menuScript = menu.GetComponent<Menu>();
+        parts.Add(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -41,15 +44,37 @@ public class Player : MonoBehaviour
             case "Poison":
                 hiddenGameObjects.Add(collider.gameObject);
                 collider.gameObject.SetActive(false);
+                thisRenderer.enabled = false;
+                menu.SetActive(true);
+                isGameOver = true;
+                for (int i = 1; i < parts.Count; i++)
+                {
+                    Destroy(parts[i]);
+                }
+                parts.Clear();
+                parts.Add(gameObject);
                 break;
             case "Health":
                 hiddenGameObjects.Add(collider.gameObject);
                 collider.gameObject.SetActive(false);
+                var newPartPosition = new Vector3(
+                    transform.position.x + direction.x * sprite.bounds.size.x,
+                    transform.position.y + direction.y * sprite.bounds.size.y,
+                    0
+                );
+                var newPart = Instantiate(part, newPartPosition, Quaternion.identity);
+                parts.Add(newPart);
                 break;
             case "Wall":
                 thisRenderer.enabled = false;
                 menu.SetActive(true);
                 isGameOver = true;
+                for (int i = 1; i < parts.Count; i++)
+                {
+                    Destroy(parts[i]);
+                }
+                parts.Clear();
+                parts.Add(gameObject);
                 break;
         }
     }
@@ -105,6 +130,10 @@ public class Player : MonoBehaviour
         }
         else
         {
+            for (int i = parts.Count - 1; i > 0; i--)
+            {
+                parts[i].transform.position = parts[i - 1].transform.position;
+            }
             transform.Translate(direction * sprite.bounds.size.x);
             remainingTimeForMove = timeToMove;
         }
