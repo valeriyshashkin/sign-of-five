@@ -8,17 +8,17 @@ public class Player : MonoBehaviour
     SpriteRenderer sprite;
     public float timeStepForMove = 0.5f;
     float remainingTimeForMove;
-    public GameObject gameOverText;
+    public GameObject menu;
     bool isGameOver = true;
-    List<Renderer> hiddenGameObjects = new List<Renderer>();
+    List<GameObject> hiddenGameObjects = new List<GameObject>();
     Renderer thisRenderer;
+    public Vector2 startPosition;
 
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         remainingTimeForMove = timeStepForMove;
         thisRenderer = GetComponent<Renderer>();
-        thisRenderer.enabled = false;
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -26,18 +26,16 @@ public class Player : MonoBehaviour
         switch (collider.tag)
         {
             case "Coin":
-                var coinRenderer = collider.gameObject.GetComponent<Renderer>();
-                hiddenGameObjects.Add(coinRenderer);
-                coinRenderer.enabled = false;
+                hiddenGameObjects.Add(collider.gameObject);
+                collider.gameObject.SetActive(false);
                 break;
             case "Poison":
-                var poisonRenderer = collider.gameObject.GetComponent<Renderer>();
-                hiddenGameObjects.Add(poisonRenderer);
-                poisonRenderer.enabled = false;
+                hiddenGameObjects.Add(collider.gameObject);
+                collider.gameObject.SetActive(false);
                 break;
             case "Wall":
                 thisRenderer.enabled = false;
-                gameOverText.SetActive(true);
+                menu.SetActive(true);
                 isGameOver = true;
                 break;
         }
@@ -49,9 +47,9 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return) && isGameOver)
         {
             isGameOver = false;
-            gameOverText.SetActive(false);
-            hiddenGameObjects.ForEach(i => i.enabled = true);
-            transform.position = new Vector3(-2.5f, 2.5f, 0f);
+            menu.SetActive(false);
+            hiddenGameObjects.ForEach(i => i.SetActive(true));
+            transform.position = startPosition;
             direction = Vector2.right;
             thisRenderer.enabled = true;
         }

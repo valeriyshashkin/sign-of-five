@@ -1942,7 +1942,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeStepForMove: 0.2
-  gameOverText: {fileID: 612793308}
+  menu: {fileID: 1934332852}
+  startPosition: {x: -2.5, y: 3}
 --- !u!61 &1746726777
 BoxCollider2D:
   m_ObjectHideFlags: 0
