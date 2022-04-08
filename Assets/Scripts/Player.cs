@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     bool isGameOver = true;
     List<GameObject> hiddenGameObjects = new List<GameObject>();
     Renderer thisRenderer;
-    public Vector2 startPosition;
+    Vector2 startPosition;
     public TextMeshProUGUI coinCount;
     public TextMeshProUGUI timeCount;
     public float timeToFinish;
@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
         thisRenderer = GetComponent<Renderer>();
         menuScript = menu.GetComponent<Menu>();
         parts.Add(gameObject);
+        startPosition = transform.position;
     }
 
     void OnTriggerEnter2D(Collider2D collider)
