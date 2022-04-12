@@ -14,8 +14,6 @@ public class Player : MonoBehaviour
     List<GameObject> hiddenGameObjects = new List<GameObject>();
     Renderer thisRenderer;
     Vector2 startPosition;
-    public TextMeshProUGUI coinCount;
-    public TextMeshProUGUI timeCount;
     public float timeToFinish;
     float remainingTimeToFinish;
     Menu menuScript;
@@ -37,25 +35,7 @@ public class Player : MonoBehaviour
     {
         switch (collider.tag)
         {
-            case "Coin":
-                hiddenGameObjects.Add(collider.gameObject);
-                collider.gameObject.SetActive(false);
-                coinCount.text = (int.Parse(coinCount.text) + 1).ToString();
-                break;
-            case "Poison":
-                hiddenGameObjects.Add(collider.gameObject);
-                collider.gameObject.SetActive(false);
-                thisRenderer.enabled = false;
-                menu.SetActive(true);
-                isGameOver = true;
-                for (int i = 1; i < parts.Count; i++)
-                {
-                    Destroy(parts[i]);
-                }
-                parts.Clear();
-                parts.Add(gameObject);
-                break;
-            case "Health":
+            case "File":
                 hiddenGameObjects.Add(collider.gameObject);
                 collider.gameObject.SetActive(false);
                 var newPartPosition = new Vector3(
@@ -106,7 +86,6 @@ public class Player : MonoBehaviour
         }
 
         remainingTimeToFinish -= Time.deltaTime;
-        timeCount.text = Mathf.Ceil(remainingTimeToFinish).ToString();
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
