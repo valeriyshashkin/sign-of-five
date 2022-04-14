@@ -39,8 +39,8 @@ public class Player : MonoBehaviour
                 hiddenGameObjects.Add(collider.gameObject);
                 collider.gameObject.SetActive(false);
                 var newPartPosition = new Vector3(
-                    transform.position.x + direction.x * sprite.bounds.size.x,
-                    transform.position.y + direction.y * sprite.bounds.size.y,
+                    parts[parts.Count - 1].transform.position.x + -direction.x * sprite.bounds.size.x,
+                    parts[parts.Count - 1].transform.position.y + -direction.y * sprite.bounds.size.y,
                     0
                 );
                 var newPart = Instantiate(part, newPartPosition, Quaternion.identity);
@@ -50,12 +50,6 @@ public class Player : MonoBehaviour
                 thisRenderer.enabled = false;
                 menu.SetActive(true);
                 isGameOver = true;
-                for (int i = 1; i < parts.Count; i++)
-                {
-                    Destroy(parts[i]);
-                }
-                parts.Clear();
-                parts.Add(gameObject);
                 break;
         }
     }
@@ -72,6 +66,12 @@ public class Player : MonoBehaviour
             direction = Vector2.right;
             thisRenderer.enabled = true;
             remainingTimeToFinish = timeToFinish;
+            for (int i = 1; i < parts.Count; i++)
+            {
+                Destroy(parts[i]);
+            }
+            parts.Clear();
+            parts.Add(gameObject);
         }
 
         if (isGameOver)
