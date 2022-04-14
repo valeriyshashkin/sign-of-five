@@ -1374,6 +1374,7 @@ MonoBehaviour:
   menu: {fileID: 1934332852}
   timeToFinish: 5
   part: {fileID: 5258828045145912932, guid: 2ceb0b8005134724787caded116ccbc2, type: 3}
+  timer: {fileID: 1748575681}
 --- !u!61 &1746726777
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1438,7 +1439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1748575682
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1478,7 +1479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 42
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38f6ea3a0385a2d43b4ae823b517df42, type: 2}
   m_sharedMaterial: {fileID: 9049758596121059105, guid: 38f6ea3a0385a2d43b4ae823b517df42, type: 2}

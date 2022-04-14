@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     Menu menuScript;
     List<GameObject> parts = new List<GameObject>();
     public GameObject part;
+    public GameObject timer;
+    TMP_Text timerUI;
 
     void Start()
     {
@@ -29,6 +31,8 @@ public class Player : MonoBehaviour
         menuScript = menu.GetComponent<Menu>();
         parts.Add(gameObject);
         startPosition = transform.position;
+        timerUI = timer.GetComponent<TMP_Text>();
+        timerUI.text = Mathf.Ceil(remainingTimeToFinish).ToString();
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -49,6 +53,7 @@ public class Player : MonoBehaviour
             case "Wall":
                 thisRenderer.enabled = false;
                 menu.SetActive(true);
+                timer.SetActive(false);
                 isGameOver = true;
                 for (int i = 1; i < parts.Count; i++)
                 {
@@ -94,6 +99,7 @@ public class Player : MonoBehaviour
             direction = Vector2.right;
             thisRenderer.enabled = true;
             remainingTimeToFinish = timeToFinish;
+            timer.SetActive(true);
         }
 
         if (isGameOver)
@@ -105,9 +111,11 @@ public class Player : MonoBehaviour
         {
             isGameOver = true;
             menu.SetActive(true);
+            timer.SetActive(false);
         }
 
         remainingTimeToFinish -= Time.deltaTime;
+        timerUI.text = Mathf.Ceil(remainingTimeToFinish).ToString();
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
