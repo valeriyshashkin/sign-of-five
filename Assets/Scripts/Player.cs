@@ -50,7 +50,35 @@ public class Player : MonoBehaviour
                 thisRenderer.enabled = false;
                 menu.SetActive(true);
                 isGameOver = true;
+                for (int i = 1; i < parts.Count; i++)
+                {
+                    Destroy(parts[i]);
+                }
+                parts.Clear();
+                parts.Add(gameObject);
                 break;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (isGameOver)
+        {
+            return;
+        }
+
+        if (remainingTimeForMove > 0)
+        {
+            remainingTimeForMove -= Time.deltaTime;
+        }
+        else
+        {
+            for (int i = parts.Count - 1; i > 0; i--)
+            {
+                parts[i].transform.position = parts[i - 1].transform.position;
+            }
+            transform.Translate(direction * sprite.bounds.size.x);
+            remainingTimeForMove = timeToMove;
         }
     }
 
@@ -66,12 +94,6 @@ public class Player : MonoBehaviour
             direction = Vector2.right;
             thisRenderer.enabled = true;
             remainingTimeToFinish = timeToFinish;
-            for (int i = 1; i < parts.Count; i++)
-            {
-                Destroy(parts[i]);
-            }
-            parts.Clear();
-            parts.Add(gameObject);
         }
 
         if (isGameOver)
@@ -102,20 +124,6 @@ public class Player : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             direction = Vector2.right;
-        }
-
-        if (remainingTimeForMove > 0)
-        {
-            remainingTimeForMove -= Time.deltaTime;
-        }
-        else
-        {
-            for (int i = parts.Count - 1; i > 0; i--)
-            {
-                parts[i].transform.position = parts[i - 1].transform.position;
-            }
-            transform.Translate(direction * sprite.bounds.size.x);
-            remainingTimeForMove = timeToMove;
         }
     }
 }
