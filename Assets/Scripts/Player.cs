@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
                 var newPart = Instantiate(part, newPartPosition, Quaternion.identity);
                 parts.Add(newPart);
                 break;
+            case "Body":
             case "Wall":
                 thisRenderer.enabled = false;
                 menu.SetActive(true);
@@ -119,18 +120,38 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
+            if (direction == Vector2.down)
+            {
+                return;
+            }
+
             direction = Vector2.up;
         }
         else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
+            if (direction == Vector2.up)
+            {
+                return;
+            }
+
             direction = Vector2.down;
         }
         else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            if (direction == Vector2.right)
+            {
+                return;
+            }
+
             direction = Vector2.left;
         }
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
+            if (direction == Vector2.left)
+            {
+                return;
+            }
+
             direction = Vector2.right;
         }
     }
