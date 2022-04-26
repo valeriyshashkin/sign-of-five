@@ -8,7 +8,7 @@ export default function Home() {
       </Head>
       <h1>Спаси змейку</h1>
       <div className="center">
-        <a href="SaveTheSnake-Setup-v1.0.exe">Скачать</a>
+        <a href="SaveTheSnake-Setup-v1.0.zip">Скачать</a>
       </div>
       <style jsx>{`
         .center {
