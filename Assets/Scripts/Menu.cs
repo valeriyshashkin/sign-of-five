@@ -27,6 +27,11 @@ public class Menu : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            isReturnPressed = true;
+        }
+
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             selectedItem--;
