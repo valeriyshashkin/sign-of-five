@@ -1360,7 +1360,7 @@ PrefabInstance:
       objectReference: {fileID: 8107493035562241216, guid: 54c4099f622d42f48a7c796a8e34350f, type: 2}
     - target: {fileID: 429547336, guid: 8d6c09a6f35ab93498a17f1a2b9375a9, type: 3}
       propertyPath: m_HorizontalAlignment
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 856644338, guid: 8d6c09a6f35ab93498a17f1a2b9375a9, type: 3}
       propertyPath: autoAdvance
