@@ -964,7 +964,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd502533d4cf11e4aa277a3faad51f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1335997075}
 --- !u!1 &1949307921 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3741743096415219989, guid: 8d6c09a6f35ab93498a17f1a2b9375a9, type: 3}
@@ -984,7 +983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueView: {fileID: 0}
   continueActionType: 1
-  continueActionKeyCode: 32
+  continueActionKeyCode: 101
 --- !u!1 &1959624473
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,6 +1365,10 @@ PrefabInstance:
     - target: {fileID: 856644338, guid: 8d6c09a6f35ab93498a17f1a2b9375a9, type: 3}
       propertyPath: autoAdvance
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 856644338, guid: 8d6c09a6f35ab93498a17f1a2b9375a9, type: 3}
+      propertyPath: useFadeEffect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 856644338, guid: 8d6c09a6f35ab93498a17f1a2b9375a9, type: 3}
       propertyPath: showCharacterNameInLineView
