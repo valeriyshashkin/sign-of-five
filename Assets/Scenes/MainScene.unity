@@ -983,7 +983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueView: {fileID: 0}
   continueActionType: 1
-  continueActionKeyCode: 101
+  continueActionKeyCode: 32
 --- !u!1 &1959624473
 GameObject:
   m_ObjectHideFlags: 0
