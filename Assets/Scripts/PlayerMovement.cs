@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     float moveSpeed = 5f;
     float jumpForce = 5f;
+    public bool grounded { get; set; }
 
     void Start()
     {
@@ -29,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
             vx = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && grounded)
         {
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
         }
