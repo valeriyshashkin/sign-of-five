@@ -4,37 +4,43 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float vx = 0f;
-    Rigidbody rb;
-    float moveSpeed = 5f;
-    float jumpForce = 5f;
-    public bool grounded { get; set; }
+    private CharacterController controller;
+    private Vector3 playerVelocity;
+    private float playerSpeed = 5.0f;
+    private float jumpHeight = 1.0f;
+    private float gravityValue = -9.81f;
+    private bool jump;
 
-    void Start()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.W) && controller.isGrounded)
         {
-            vx = -1;
+            jump = true;
         }
-        else if (Input.GetKey(KeyCode.D))
+    }
+
+    void FixedUpdate()
+    {
+        if (controller.isGrounded && playerVelocity.y < 0)
         {
-            vx = 1;
-        }
-        else
-        {
-            vx = 0;
+            playerVelocity.y = 0f;
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && grounded)
+        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+        controller.Move(move * Time.deltaTime * playerSpeed);
+
+        if (jump)
         {
-            rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            jump = false;
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
 
-        rb.velocity = new Vector3(vx * moveSpeed, rb.velocity.y, 0);
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
     }
 }
