@@ -322,8 +322,8 @@ GameObject:
   - component: {fileID: 3741743096415219985}
   - component: {fileID: 1552683931754744364}
   - component: {fileID: 7395800848814031257}
-  - component: {fileID: 856644338}
   - component: {fileID: 8697875263856351829}
+  - component: {fileID: 3593767283577199337}
   m_Layer: 5
   m_Name: Dialogue Bubble
   m_TagString: Untagged
@@ -346,10 +346,10 @@ RectTransform:
   m_Father: {fileID: 3741743097333894311}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -414.00012, y: 198}
-  m_SizeDelta: {x: 334.8, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 225.99985, y: -312.43}
+  m_SizeDelta: {x: 314.8, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &5609162152315567992
 MonoBehaviour:
@@ -429,7 +429,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &856644338
+--- !u!225 &8697875263856351829
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741743096415219989}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &3593767283577199337
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -446,28 +458,16 @@ MonoBehaviour:
   fadeInTime: 0.25
   fadeOutTime: 0.05
   lineText: {fileID: 429547336}
-  showCharacterNameInLineView: 0
+  showCharacterNameInLineView: 1
   characterNameText: {fileID: 0}
-  useTypewriterEffect: 1
+  useTypewriterEffect: 0
   onCharacterTyped:
     m_PersistentCalls:
       m_Calls: []
-  typewriterEffectSpeed: 40
+  typewriterEffectSpeed: 0
   continueButton: {fileID: 0}
   holdTime: 1
   autoAdvance: 0
---- !u!225 &8697875263856351829
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3741743096415219989}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &3741743096958657524
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,7 +537,7 @@ MonoBehaviour:
   yarnProject: {fileID: 7545569452688597077, guid: 7695ad157ec234e088ab1de2389cbc9c, type: 3}
   _variableStorage: {fileID: 3741743096958657527}
   dialogueViews:
-  - {fileID: 856644338}
+  - {fileID: 3593767283577199337}
   - {fileID: 6711672230207336559}
   - {fileID: 4138263016411109766}
   startNode: Start
