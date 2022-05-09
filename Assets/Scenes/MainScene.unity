@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 261055858}
   m_Layer: 0
   m_Name: Character.Square
-  m_TagString: Interactable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 290629447}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: Interactable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -747,7 +747,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a37a5495548ea654fbd4fc2b6fe998d0, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -788,11 +788,12 @@ GameObject:
   - component: {fileID: 1335997075}
   - component: {fileID: 1335997074}
   - component: {fileID: 1335997073}
+  - component: {fileID: 1335997078}
   - component: {fileID: 1335997076}
   - component: {fileID: 1335997077}
   m_Layer: 0
   m_Name: Character.Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -910,6 +911,19 @@ MonoBehaviour:
   characterName: Player
   messageBubbleOffset: {x: 0, y: 0.8, z: 0}
   offsetUsesRotation: 0
+--- !u!65 &1335997078
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335997071}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1657878757 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4138263016411109766, guid: 8d6c09a6f35ab93498a17f1a2b9375a9, type: 3}
