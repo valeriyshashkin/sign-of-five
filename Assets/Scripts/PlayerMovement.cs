@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     CharacterController controller;
     DialogueRunner dialogueRunner;
-    SpriteRenderer icon;
+    Animator iconAnimator;
     Vector3 playerVelocity;
     float playerSpeed = 5.0f;
     float jumpHeight = 1.0f;
@@ -20,11 +20,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collider.tag == "Interactable")
         {
-            icon = collider.gameObject.transform
+            iconAnimator = collider.gameObject.transform
                 .GetChild(0)
-                .gameObject.GetComponent<SpriteRenderer>();
+                .gameObject.GetComponent<Animator>();
             inTrigger = true;
-            StartCoroutine(FadeInIcon());
+            iconAnimator.Play("FadeIn");
         }
     }
 
@@ -32,29 +32,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collider.tag == "Interactable")
         {
-            icon = collider.gameObject.transform
+            iconAnimator = collider.gameObject.transform
                 .GetChild(0)
-                .gameObject.GetComponent<SpriteRenderer>();
+                .gameObject.GetComponent<Animator>();
             inTrigger = false;
-            StartCoroutine(FadeOutIcon());
-        }
-    }
-
-    IEnumerator FadeInIcon()
-    {
-        for (float i = 0; i <= 1; i += Time.deltaTime)
-        {
-            icon.color = new Color(1, 1, 1, i);
-            yield return null;
-        }
-    }
-
-    IEnumerator FadeOutIcon()
-    {
-        for (float i = 1; i >= 0; i -= Time.deltaTime)
-        {
-            icon.color = new Color(1, 1, 1, i);
-            yield return null;
+            iconAnimator.Play("FadeOut");
         }
     }
 
@@ -62,10 +44,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (makeSomeAction)
         {
-            icon = collider.gameObject.transform
-                .GetChild(0)
-                .gameObject.GetComponent<SpriteRenderer>();
-            StartCoroutine(FadeOutIcon());
+            iconAnimator.Play("FadeOut");
             makeSomeAction = false;
             collider.gameObject.GetComponent<YarnInteractable>().Interact();
         }
@@ -75,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (inTrigger)
         {
-            StartCoroutine(FadeInIcon());
+            iconAnimator.Play("FadeIn");
         }
     }
 
