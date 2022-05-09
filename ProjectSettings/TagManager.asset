@@ -4,9 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Wall
-  - File
-  - Body
+  - Interactable
   layers:
   - Default
   - TransparentFX
