@@ -36,12 +36,12 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) && !makeSomeAction)
+        if (Input.GetButtonUp("Submit") && !makeSomeAction)
         {
             makeSomeAction = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && controller.isGrounded)
+        if (Input.GetButtonDown("Jump") && controller.isGrounded)
         {
             jump = true;
         }
