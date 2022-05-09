@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Square
-  messageBubbleOffset: {x: 0, y: 3, z: 0}
+  messageBubbleOffset: {x: 0, y: 1.2, z: 0}
   offsetUsesRotation: 0
 --- !u!212 &261055854
 SpriteRenderer:
@@ -805,21 +805,6 @@ MonoBehaviour:
   dialogueView: {fileID: 0}
   continueActionType: 1
   continueActionKeyCode: 101
---- !u!114 &1949307935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949307921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 097b95c9f69f04f2d8c08a817e7786af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueView: {fileID: 0}
-  continueActionType: 1
-  continueActionKeyCode: 13
 --- !u!1 &1975990938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,6 +999,10 @@ PrefabInstance:
     - target: {fileID: 2529968423570959529, guid: 8d6c09a6f35ab93498a17f1a2b9375a9, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783822955750036379, guid: 8d6c09a6f35ab93498a17f1a2b9375a9, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3593767283577199337, guid: 8d6c09a6f35ab93498a17f1a2b9375a9, type: 3}
       propertyPath: useTypewriterEffect
@@ -1223,6 +1212,14 @@ PrefabInstance:
       propertyPath: allCharacters.Array.data[1]
       value: 
       objectReference: {fileID: 261055853}
+    - target: {fileID: 6751883924115097644, guid: 8d6c09a6f35ab93498a17f1a2b9375a9, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173589957474124885, guid: 8d6c09a6f35ab93498a17f1a2b9375a9, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9110883516962406001, guid: 8d6c09a6f35ab93498a17f1a2b9375a9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
