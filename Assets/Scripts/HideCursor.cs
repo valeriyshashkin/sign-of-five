@@ -11,7 +11,6 @@ public class HideCursor : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        lastSelected = new GameObject();
     }
 
     void Update()
