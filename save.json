@@ -1,0 +1,8 @@
+{
+  "scene": "MainScene",
+  "yarnStrings": {
+    "$mood": "good"
+  },
+  "yarnFloats": {},
+  "yarnBools": {}
+}
