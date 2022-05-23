@@ -30,6 +30,7 @@ public class SaveController : MonoBehaviour
     void Start()
     {
         inMemoryVariableStorage = FindObjectOfType<InMemoryVariableStorage>();
+        saveData = new SaveData();
 
         if (!File.Exists(saveFilePath))
         {
@@ -37,16 +38,28 @@ public class SaveController : MonoBehaviour
         }
 
         saveData = JsonConvert.DeserializeObject<SaveData>(File.ReadAllText(saveFilePath));
-        inMemoryVariableStorage.SetAllVariables(saveData.yarnFloats, saveData.yarnStrings, saveData.yarnBools);
+
+        try
+        {
+            inMemoryVariableStorage.SetAllVariables(saveData.yarnFloats, saveData.yarnStrings, saveData.yarnBools);
+        }
+        catch { }
+
         SceneManager.LoadScene(saveData.scene);
     }
 
     public void Save()
     {
         var variables = inMemoryVariableStorage.GetAllVariables();
-        saveData.yarnFloats = variables.Item1;
-        saveData.yarnStrings = variables.Item2;
-        saveData.yarnBools = variables.Item3;
+
+        try
+        {
+            saveData.yarnFloats = variables.Item1;
+            saveData.yarnStrings = variables.Item2;
+            saveData.yarnBools = variables.Item3;
+        }
+        catch { }
+
         File.WriteAllText(saveFilePath, JsonConvert.SerializeObject(saveData, formatting));
     }
 }
