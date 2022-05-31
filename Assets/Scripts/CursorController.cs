@@ -1,24 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Yarn.Unity;
+using UnityEngine.EventSystems;
 
 public class CursorController : MonoBehaviour
 {
-    DialogueRunner dialogueRunner;
-    public GameObject cursor;
+    GameObject lastSelected;
 
     void Start()
     {
-        dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
-        Vector3 newCursorPosition = Input.mousePosition;
-        newCursorPosition.z = 1;
-        cursor.transform.position = Camera.main.ScreenToWorldPoint(newCursorPosition);
-        cursor.SetActive(dialogueRunner.IsDialogueRunning);
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            EventSystem.current.SetSelectedGameObject(lastSelected);
+        }
+        else
+        {
+            lastSelected = EventSystem.current.currentSelectedGameObject;
+        }
     }
 }
