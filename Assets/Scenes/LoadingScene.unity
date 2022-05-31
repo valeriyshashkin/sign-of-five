@@ -505,7 +505,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 522341963}
   optionViewPrefab: {fileID: 710983989}
   lastLineText: {fileID: 0}
-  fadeTime: 0.05
+  fadeTime: 0.15
   showUnavailableOptions: 0
 --- !u!222 &522341968
 CanvasRenderer:
@@ -1284,8 +1284,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 2085595639}
   useFadeEffect: 1
-  fadeInTime: 0.05
-  fadeOutTime: 0.05
+  fadeInTime: 0.15
+  fadeOutTime: 0.15
   lineText: {fileID: 343106477}
   showCharacterNameInLineView: 0
   characterNameText: {fileID: 0}
@@ -1293,7 +1293,7 @@ MonoBehaviour:
   onCharacterTyped:
     m_PersistentCalls:
       m_Calls: []
-  typewriterEffectSpeed: 150
+  typewriterEffectSpeed: 100
   continueButton: {fileID: 0}
   holdTime: 1
   autoAdvance: 0
