@@ -8,7 +8,7 @@ using Yarn.Unity;
 
 public class SaveData
 {
-    public string scene = "MainScene";
+    public string scene;
     public Dictionary<string, string> yarnStrings = new Dictionary<string, string>();
     public Dictionary<string, float> yarnFloats = new Dictionary<string, float>();
     public Dictionary<string, bool> yarnBools = new Dictionary<string, bool>();
@@ -18,6 +18,7 @@ public class SaveController : MonoBehaviour
 {
     InMemoryVariableStorage inMemoryVariableStorage;
     public SaveData saveData;
+    public string startScene;
 
 #if UNITY_EDITOR
     string saveFilePath = "./save.json";
@@ -34,6 +35,7 @@ public class SaveController : MonoBehaviour
 
         if (!File.Exists(saveFilePath))
         {
+            saveData.scene = startScene;
             Save();
         }
 

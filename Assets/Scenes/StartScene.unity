@@ -1111,6 +1111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbd02a7808d80324aaa78df5c8a84abe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startScene: School
 --- !u!4 &1835347415
 Transform:
   m_ObjectHideFlags: 0
