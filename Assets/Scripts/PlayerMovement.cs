@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     CharacterController controller;
     DialogueRunner dialogueRunner;
     Vector3 playerVelocity;
-    float playerSpeed = 5.0f;
+    float playerSpeed = 7.0f;
     float jumpHeight = 1.0f;
     float gravityValue = -9.81f;
     bool jump;
