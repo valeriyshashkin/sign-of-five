@@ -6,26 +6,37 @@ using Yarn.Unity;
 public class YarnInteractable : MonoBehaviour
 {
     DialogueRunner dialogueRunner;
-    Animator animator;
     public string node;
     bool userRequestAction;
     bool inTrigger;
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.tag == "Player")
+        var tagsComponent = collider.gameObject.GetComponent<Tags>();
+
+        if (tagsComponent == null)
+        {
+            return;
+        }
+
+        if (tagsComponent.tags.Contains("Player"))
         {
             inTrigger = true;
-            animator.Play("FadeIn");
         }
     }
 
     void OnTriggerExit(Collider collider)
     {
-        if (collider.tag == "Player")
+        var tagsComponent = collider.gameObject.GetComponent<Tags>();
+
+        if (tagsComponent == null)
+        {
+            return;
+        }
+
+        if (tagsComponent.tags.Contains("Player"))
         {
             inTrigger = false;
-            animator.Play("FadeOut");
         }
     }
 
@@ -34,24 +45,13 @@ public class YarnInteractable : MonoBehaviour
         if (userRequestAction)
         {
             userRequestAction = false;
-            animator.Play("FadeOut");
-            Interact();
-        }
-    }
-
-    void OnDialogueComplete()
-    {
-        if (inTrigger)
-        {
-            animator.Play("FadeIn");
+            dialogueRunner.StartDialogue(node);
         }
     }
 
     void Start()
     {
-        animator = transform.GetChild(0).GetComponent<Animator>();
         dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
-        dialogueRunner.onDialogueComplete.AddListener(OnDialogueComplete);
     }
 
     void Update()
@@ -65,10 +65,5 @@ public class YarnInteractable : MonoBehaviour
         {
             userRequestAction = true;
         }
-    }
-
-    void Interact()
-    {
-        dialogueRunner.StartDialogue(node);
     }
 }

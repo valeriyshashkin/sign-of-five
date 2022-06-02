@@ -7,22 +7,75 @@ public class PlayerMovement : MonoBehaviour
 {
     CharacterController controller;
     DialogueRunner dialogueRunner;
+    Tip tip;
     Vector3 playerVelocity;
     float playerSpeed = 7.0f;
     float jumpHeight = 1.0f;
     float gravityValue = -9.81f;
     bool jump;
 
+    void OnTriggerEnter(Collider collider)
+    {
+        var tagsComponent = collider.gameObject.GetComponent<Tags>();
+
+        if (tagsComponent == null)
+        {
+            return;
+        }
+
+        if (tagsComponent.tags.Contains("Interactable"))
+        {
+            tip.Show();
+        }
+    }
+
+    void OnTriggerExit(Collider collider)
+    {
+        var tagsComponent = collider.gameObject.GetComponent<Tags>();
+
+        if (tagsComponent == null)
+        {
+            return;
+        }
+
+        if (tagsComponent.tags.Contains("Interactable"))
+        {
+            tip.Hide();
+        }
+    }
+
+    void OnTriggerStay(Collider collider)
+    {
+        if (dialogueRunner.IsDialogueRunning)
+        {
+            return;
+        }
+
+        var tagsComponent = collider.gameObject.GetComponent<Tags>();
+
+        if (tagsComponent == null)
+        {
+            return;
+        }
+
+        if (tagsComponent.tags.Contains("Interactable"))
+        {
+            tip.Show();
+        }
+    }
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
         dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
+        tip = FindObjectOfType<Tip>();
     }
 
     void Update()
     {
         if (dialogueRunner.IsDialogueRunning)
         {
+            tip.Hide();
             return;
         }
 
