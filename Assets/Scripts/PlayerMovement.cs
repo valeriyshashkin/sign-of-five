@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (tagsComponent.tags.Contains("Interactable"))
+        if (tagsComponent.tags.Contains("Interactable") && !GameObject.ReferenceEquals(this.gameObject, collider.gameObject))
         {
             tip.Show();
         }
@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (tagsComponent.tags.Contains("Interactable"))
+        if (tagsComponent.tags.Contains("Interactable") && !GameObject.ReferenceEquals(this.gameObject, collider.gameObject))
         {
             tip.Hide();
         }
@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (tagsComponent.tags.Contains("Interactable"))
+        if (tagsComponent.tags.Contains("Interactable") && !GameObject.ReferenceEquals(this.gameObject, collider.gameObject))
         {
             tip.Show();
         }
