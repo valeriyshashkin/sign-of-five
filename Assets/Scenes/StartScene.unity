@@ -190,7 +190,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -897,7 +897,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1014001918
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1304,6 +1304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1749517436}
   - component: {fileID: 1749517437}
+  - component: {fileID: 1749517438}
   m_Layer: 5
   m_Name: Tip
   m_TagString: Untagged
@@ -1344,6 +1345,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f99978527615d459a837525ab6ff95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1749517438
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749517435}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 893fcc6403213cb4c897a637443b31f9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1835347413
 GameObject:
   m_ObjectHideFlags: 0

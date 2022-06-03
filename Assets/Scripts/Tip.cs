@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class Tip : MonoBehaviour
 {
+    Animator animator;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     public void Show()
     {
-        this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        animator.Play("FadeIn");
     }
 
     public void Hide()
     {
-        this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        animator.Play("FadeOut");
     }
 }
