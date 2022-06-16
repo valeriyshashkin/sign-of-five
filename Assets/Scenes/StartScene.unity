@@ -1436,7 +1436,6 @@ GameObject:
   - component: {fileID: 2085595641}
   - component: {fileID: 2085595640}
   - component: {fileID: 2085595639}
-  - component: {fileID: 2085595637}
   - component: {fileID: 2085595638}
   - component: {fileID: 2085595644}
   - component: {fileID: 2085595645}
@@ -1468,21 +1467,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 80}
   m_SizeDelta: {x: -40, y: 0}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &2085595637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2085595634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 097b95c9f69f04f2d8c08a817e7786af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueView: {fileID: 0}
-  continueActionType: 1
-  continueActionKeyCode: 101
 --- !u!114 &2085595638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1578,10 +1562,10 @@ MonoBehaviour:
   onCharacterTyped:
     m_PersistentCalls:
       m_Calls: []
-  typewriterEffectSpeed: 100
+  typewriterEffectSpeed: 80
   continueButton: {fileID: 0}
   holdTime: 1
-  autoAdvance: 0
+  autoAdvance: 1
 --- !u!222 &2085595644
 CanvasRenderer:
   m_ObjectHideFlags: 0
