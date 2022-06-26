@@ -9,6 +9,8 @@ public class YarnInteractable : MonoBehaviour
     public string node;
     bool userRequestAction;
     bool inTrigger;
+    bool readyForAction = false;
+    Coroutine waitForActionCoroutine;
 
     void OnTriggerEnter(Collider collider)
     {
@@ -22,6 +24,7 @@ public class YarnInteractable : MonoBehaviour
         if (tagsComponent.tags.Contains("Player"))
         {
             inTrigger = true;
+            waitForActionCoroutine = StartCoroutine(WaitForAction());
         }
     }
 
@@ -37,7 +40,14 @@ public class YarnInteractable : MonoBehaviour
         if (tagsComponent.tags.Contains("Player"))
         {
             inTrigger = false;
+            StopCoroutine(waitForActionCoroutine);
         }
+    }
+
+    IEnumerator WaitForAction()
+    {
+        yield return new WaitForSeconds(1);
+        readyForAction = true;
     }
 
     void OnTriggerStay(Collider collider)
@@ -61,8 +71,9 @@ public class YarnInteractable : MonoBehaviour
             return;
         }
 
-        if (Input.GetButtonUp("Submit") && inTrigger)
+        if (readyForAction && inTrigger)
         {
+            readyForAction = false;
             userRequestAction = true;
         }
     }

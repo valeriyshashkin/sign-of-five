@@ -1,8 +1,6 @@
 {
   "scene": "School",
-  "yarnStrings": {
-    "$mood": "the best"
-  },
+  "yarnStrings": {},
   "yarnFloats": {},
   "yarnBools": {}
 }
