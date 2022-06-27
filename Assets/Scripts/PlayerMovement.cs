@@ -13,41 +13,6 @@ public class PlayerMovement : MonoBehaviour
     float gravityValue = -9.81f;
     bool jump;
 
-    void OnTriggerEnter(Collider collider)
-    {
-        var tagsComponent = collider.gameObject.GetComponent<Tags>();
-
-        if (tagsComponent == null)
-        {
-            return;
-        }
-    }
-
-    void OnTriggerExit(Collider collider)
-    {
-        var tagsComponent = collider.gameObject.GetComponent<Tags>();
-
-        if (tagsComponent == null)
-        {
-            return;
-        }
-    }
-
-    void OnTriggerStay(Collider collider)
-    {
-        if (dialogueRunner.IsDialogueRunning)
-        {
-            return;
-        }
-
-        var tagsComponent = collider.gameObject.GetComponent<Tags>();
-
-        if (tagsComponent == null)
-        {
-            return;
-        }
-    }
-
     void Start()
     {
         controller = GetComponent<CharacterController>();
