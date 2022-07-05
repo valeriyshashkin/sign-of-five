@@ -6,7 +6,6 @@ using Yarn.Unity;
 public class PlayerMovement : MonoBehaviour
 {
     CharacterController controller;
-    DialogueRunner dialogueRunner;
     Vector3 playerVelocity;
     float playerSpeed = 7.0f;
     float jumpHeight = 1.0f;
@@ -16,16 +15,10 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
     }
 
     void Update()
     {
-        if (dialogueRunner.IsDialogueRunning)
-        {
-            return;
-        }
-
         if (Input.GetButtonDown("Jump") && controller.isGrounded)
         {
             jump = true;
@@ -39,16 +32,13 @@ public class PlayerMovement : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        if (!dialogueRunner.IsDialogueRunning)
-        {
-            Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
-            controller.Move(move * Time.deltaTime * playerSpeed);
+        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+        controller.Move(move * Time.deltaTime * playerSpeed);
 
-            if (jump)
-            {
-                jump = false;
-                playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-            }
+        if (jump)
+        {
+            jump = false;
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
