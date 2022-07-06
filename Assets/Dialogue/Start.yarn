@@ -1,4 +1,8 @@
-﻿title: Square
+﻿title: Stop
+---
+Игрок:
+===
+title: Square
 tags:
 ---
 <<if $mood == "the best">>

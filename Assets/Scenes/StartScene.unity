@@ -504,7 +504,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 522341963}
   optionViewPrefab: {fileID: 710983989}
   lastLineText: {fileID: 0}
-  fadeTime: 0.15
+  fadeTime: 0
   showUnavailableOptions: 0
 --- !u!222 &522341968
 CanvasRenderer:
@@ -1236,7 +1236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 2085595639}
-  useFadeEffect: 1
+  useFadeEffect: 0
   fadeInTime: 0.15
   fadeOutTime: 0.15
   lineText: {fileID: 343106477}

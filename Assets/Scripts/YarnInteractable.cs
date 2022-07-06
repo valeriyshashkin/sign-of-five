@@ -30,6 +30,9 @@ public class YarnInteractable : MonoBehaviour
 
     void OnTriggerExit(Collider collider)
     {
+        dialogueRunner.Stop();
+        dialogueRunner.StartDialogue("Stop");
+
         var tagsComponent = collider.gameObject.GetComponent<Tags>();
 
         if (tagsComponent == null)
