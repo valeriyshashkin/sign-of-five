@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     float playerSpeed = 7;
     float playerRunSpeed = 12;
     float jumpHeight = 1;
-    float gravityValue = -9.81f;
+    float gravityValue = -9.81f * 1.5f;
     bool jump;
     bool run;
     float holdingShiftTime;
