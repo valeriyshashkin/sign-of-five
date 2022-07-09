@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     CharacterController controller;
     Vector3 playerVelocity;
     float playerSpeed = 7;
-    float playerRunSpeed = 14;
+    float playerRunSpeed = 12;
     float jumpHeight = 1;
     float gravityValue = -9.81f;
     bool jump;
@@ -22,11 +22,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (!controller.isGrounded)
-        {
-            return;
-        }
-
         if (Input.GetButtonUp("Fire3"))
         {
             if (holdingShiftTime >= 0.3)
@@ -41,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
             holdingShiftTime += Time.deltaTime;
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && controller.isGrounded)
         {
             jump = true;
         }
@@ -66,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         move = transform.TransformDirection(move);
-        controller.Move(move * Time.deltaTime * (run ? playerRunSpeed : playerSpeed));
+        controller.Move(move * Time.deltaTime * (run && Input.GetAxis("Vertical") > 0 ? playerRunSpeed : playerSpeed));
 
         if (jump)
         {
