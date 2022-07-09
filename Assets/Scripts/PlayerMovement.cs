@@ -32,7 +32,8 @@ public class PlayerMovement : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        move = transform.TransformDirection(move);
         controller.Move(move * Time.deltaTime * playerSpeed);
 
         if (jump)
